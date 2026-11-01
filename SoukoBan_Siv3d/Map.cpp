@@ -7,12 +7,13 @@ Map::Map() {
 	m_MapChip_Images.push_back(Texture{ U"example/Images/block_06.png" });
 	m_MapChip_Images.push_back(Texture{ U"example/Images/block_01.png" });
 	m_MapChip_Images.push_back(Texture{ U"example/Images/ground_03.png" });
+	m_MapChip_Images.push_back(Texture{ U"example/Images/player_01.png" });
 
 	//マップデータ
 	m_map = {
 		{ W,W,W,W,W },
 		{ W,F,B,G,W },
-		{ W,F,F,F,W },
+		{ W,F,F,P,W },
 		{ W,W,W,W,W }
 	};
 
@@ -23,9 +24,12 @@ Map::Map() {
 
 //マップ描画関数
 void Map::DrawMap() {
+	//床を描画した後、床以外を描画する
 	for (int y = 0; y < m_mapChip_Height; ++y) {
 		for (int x = 0; x < m_mapChip_Width; ++x) {
 			int c_map = m_map[y][x];
+			m_MapChip_Images[F].draw(x * MAP_CHIP_SIZE, y * MAP_CHIP_SIZE);
+			if (c_map == F) continue;
 			m_MapChip_Images[c_map].draw(x * MAP_CHIP_SIZE, y * MAP_CHIP_SIZE);
 		}
 	}
