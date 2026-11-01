@@ -4,13 +4,13 @@
 
 void Main()
 {
-	Map map;
+	auto map = std::make_unique<Map>();//インスタンスを安全に生成
 	// 背景の色を設定する | Set the background color
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
 
 	while (System::Update())
 	{
-		map.DrawMap();
+		map->DrawMap();
 	}
 }
 
