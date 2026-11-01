@@ -13,7 +13,7 @@ protected:
 	int m_mapChip_Width;				   //マップの横幅
 	int m_mapChip_Height;                  //マップの縦幅
 
-	enum CHIP_Data { F, W, B, G, P }; //床、壁、箱、ゴール、プレイヤー（分かりやすいように1文字で）
+	enum TILE_Data { F, W, G }; //床、壁、ゴール（分かりやすいように1文字で）
 	std::vector<Texture> m_MapChip_Images;//画像
-	std::vector<std::vector<CHIP_Data>> m_map;//マップデータの２次元配列
+	std::vector<std::vector<TILE_Data>> m_map;//マップデータの２次元配列
 };

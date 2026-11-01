@@ -6,14 +6,12 @@ Map::Map() {
 	m_MapChip_Images.push_back(Texture{ U"example/Images/ground_06.png" });
 	m_MapChip_Images.push_back(Texture{ U"example/Images/block_06.png" });
 	m_MapChip_Images.push_back(Texture{ U"example/Images/block_01.png" });
-	m_MapChip_Images.push_back(Texture{ U"example/Images/ground_03.png" });
-	m_MapChip_Images.push_back(Texture{ U"example/Images/player_01.png" });
 
 	//マップデータ
 	m_map = {
 		{ W,W,W,W,W },
-		{ W,F,B,G,W },
-		{ W,F,F,P,W },
+		{ W,F,F,G,W },
+		{ W,F,F,F,W },
 		{ W,W,W,W,W }
 	};
 
