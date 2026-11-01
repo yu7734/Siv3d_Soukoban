@@ -15,5 +15,5 @@ protected:
 
 	enum CHIP_Data { F, W, B, G }; //床、壁、箱、ゴール（分かりやすいように1文字で）
 	std::vector<Texture> m_MapChip_Images;//画像
-	std::vector<std::vector<CHIP_Data>> m_map;
+	std::vector<std::vector<CHIP_Data>> m_map;//マップデータの２次元配列
 };
