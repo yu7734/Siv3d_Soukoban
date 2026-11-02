@@ -5,7 +5,7 @@ Map::Map() {
 	//テクスチャを登録
 	m_MapChip_Images.push_back(Texture{ U"example/Images/ground_06.png" });
 	m_MapChip_Images.push_back(Texture{ U"example/Images/block_06.png" });
-	m_MapChip_Images.push_back(Texture{ U"example/Images/block_01.png" });
+	m_MapChip_Images.push_back(Texture{ U"example/Images/ground_03.png" });
 
 	//マップデータ
 	m_map = {
@@ -32,3 +32,5 @@ void Map::DrawMap() {
 		}
 	}
 }
+
+int Map::Get_MAP_CHIP_SIZE() { return MAP_CHIP_SIZE; }

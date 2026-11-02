@@ -1,13 +1,14 @@
 ﻿#pragma once
 //# include <Siv3D.hpp>
 # include <vector>
-
 class Map {
 public:
 	Map();
 	//~Map();
 
 	void DrawMap();
+
+	static int Get_MAP_CHIP_SIZE();
 protected:
 	static const int MAP_CHIP_SIZE = 64;   //マップチップの画像サイズ
 	int m_mapChip_Width;				   //マップの横幅
