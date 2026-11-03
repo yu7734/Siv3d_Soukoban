@@ -2,11 +2,13 @@
 # include <memory>
 # include "Map.h"
 # include "Player.h"
+# include "Block.h"
 
 void Main()
 {
 	auto map = std::make_unique<Map>();//インスタンスを安全に生成
 	auto player = std::make_unique<Player>(3, 2);
+	auto block = std::make_unique<Block>(2, 1);
 
 	// 背景の色を設定する | Set the background color
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
@@ -15,6 +17,7 @@ void Main()
 	{
 		map->DrawMap();
 		player->Draw();
+		block->Draw();
 	}
 }
 
