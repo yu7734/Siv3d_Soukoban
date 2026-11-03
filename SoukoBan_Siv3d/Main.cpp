@@ -18,6 +18,8 @@ void Main()
 		map->DrawMap();
 		player->Draw();
 		block->Draw();
+
+		player->Move();
 	}
 }
 
