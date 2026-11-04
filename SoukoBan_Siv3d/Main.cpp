@@ -7,7 +7,7 @@
 void Main()
 {
 	auto map = std::make_unique<Map>();//インスタンスを安全に生成
-	auto player = std::make_unique<Player>(3, 2);
+	auto player = std::make_unique<Player>(map->Get_Player_Start().x, map->Get_Player_Start().y);
 	auto block = std::make_unique<Block>(2, 1);
 
 	// 背景の色を設定する | Set the background color
