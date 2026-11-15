@@ -6,20 +6,17 @@
 
 void Main()
 {
-	auto map = std::make_unique<Map>();//インスタンスを安全に生成
-	auto player = std::make_unique<Player>(map->Get_Player_Start().x, map->Get_Player_Start().y);
-	auto block = std::make_unique<Block>(2, 1);
+	//auto map = std::make_unique<Map>();//インスタンスを安全に生成
+	//auto player = std::make_unique<Player>(map->Get_Player_Start().x, map->Get_Player_Start().y);
+	//auto block = std::make_unique<Block>(2, 1);
 
 	// 背景の色を設定する | Set the background color
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
 
 	while (System::Update())
 	{
-		map->DrawMap();
-		player->Draw();
-		block->Draw();
-
-		player->Move();
+		//map->DrawMap();
+		
 	}
 }
 

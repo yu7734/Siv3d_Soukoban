@@ -2,45 +2,35 @@
 #include "Player.h"
 #include <vector>
 
-Map::Map() {
-	//テクスチャを登録
-	m_MapChip_Images.push_back(Texture{ U"example/Images/ground_06.png" });
-	m_MapChip_Images.push_back(Texture{ U"example/Images/block_06.png" });
-	m_MapChip_Images.push_back(Texture{ U"example/Images/ground_03.png" });
+//コンストラクタ
+Map::Map() : m_MapChip_Images
+{ Texture{ U"example/Images/ground_06.png" },
+  Texture{ U"example/Images/block_06.png" },
+  Texture{ U"example/Images/ground_03.png"} }
+{
 
-	//マップデータ
-	m_map = {
-		{ W,W,W,W,W },
-		{ W,F,B,G,W },
-		{ W,F,F,P,W },
-		{ W,W,W,W,W }
-	};
-
-	//幅を取得(static_castを使ってintに変更(32bit))
-	m_mapChip_Height = static_cast<int32>(m_map.size());
-	m_mapChip_Width  = static_cast<int32>(m_map[0].size());
-
-	for (int y = 0; y < m_mapChip_Height; ++y) {
-		for (int x = 0; x < m_mapChip_Width; ++x) {
-			int& c_map = m_map[y][x];
-			if (c_map == P) { m_Player_Start = Point{ x, y };  c_map = F; }
-			else if (c_map == B) { c_map = F; }
-		}
-	}
 }
 
-//マップ描画関数
-void Map::DrawMap() {
-	//マップを描画
-	for (int y = 0; y < m_mapChip_Height; ++y) {
-		for (int x = 0; x < m_mapChip_Width; ++x) {
-			int c_map = m_map[y][x];
-			if      (c_map == W) m_MapChip_Images[W].draw(x * MAP_CHIP_SIZE, y * MAP_CHIP_SIZE);
-			else if (c_map == G) m_MapChip_Images[G].draw(x * MAP_CHIP_SIZE, y * MAP_CHIP_SIZE);
-			else	             m_MapChip_Images[F].draw(x * MAP_CHIP_SIZE, y * MAP_CHIP_SIZE);
+//CSVファイルからint32の２次元配列を読み込む
+Grid<int32> Map::LoadCSV(FilePathView path) {
+	CSV csv{ path }; //CSVファイル読み込み
+
+	//読み込み失敗したら
+	if (not csv) {
+		throw Error{ U"filed to load'{}'"_fmt(path) };//エラー
+	}
+
+	const size_t yCount = csv.rows();    //列数
+	const size_t xCount = csv.columns(0);//行数(１列目と同じ数)
+
+	//２次元配列
+	Grid<int32> map;
+
+	for (int y = 0; y < yCount; ++y) {
+		for (int x = 0; x < xCount; ++x) {
+			map[y][x] = csv.get<int32>(y, x);//指定した行・列の読み込み
 		}
 	}
-}
 
-int Map::Get_MAP_CHIP_SIZE() { return MAP_CHIP_SIZE; }
-Point Map::Get_Player_Start() { return this->m_Player_Start; }
+	return map;
+}
