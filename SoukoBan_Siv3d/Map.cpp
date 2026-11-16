@@ -53,6 +53,10 @@ void Map::DrawMap() {
 	}
 }
 
-//int Map::Get_MAP_CHIP_SIZE() {
-//	return 0;
-//}
+int Map::Get_MAP_CHIP_SIZE() {
+	return MAP_CHIP_SIZE;
+}
+
+Point Map::Get_Player_Start() {
+	return { m_Player_Start.x, m_Player_Start.y };
+}
