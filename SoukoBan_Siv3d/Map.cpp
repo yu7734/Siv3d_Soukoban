@@ -23,6 +23,7 @@ void Map::LoadCSV(FilePathView path) {
 	const size_t xCount = csv.columns(0);//列数(１行目と同じ数)
 
 	m_map_Layer.resize(xCount, yCount);
+	m_Block_Start.clear();
 
 	for (int y = 0; y < yCount; ++y) {
 		for (int x = 0; x < xCount; ++x) {
@@ -30,6 +31,10 @@ void Map::LoadCSV(FilePathView path) {
 
 			if (m_map_Layer[y][x] == 3) {
 				m_Player_Start = { x, y };
+				m_map_Layer[y][x] = 0;
+			}
+			if (m_map_Layer[y][x] == 4) {
+				m_Block_Start << Point{ x, y };
 				m_map_Layer[y][x] = 0;
 			}
 		}
@@ -59,4 +64,8 @@ int Map::Get_MAP_CHIP_SIZE() {
 
 Point Map::Get_Player_Start() {
 	return { m_Player_Start.x, m_Player_Start.y };
+}
+
+Array<Point> Map::Get_Block_Start() {
+	return m_Block_Start;
 }

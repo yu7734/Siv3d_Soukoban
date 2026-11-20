@@ -9,8 +9,12 @@ void Main()
 	auto map = std::make_unique<Map>();//インスタンスを安全に生成
 	map->LoadCSV(U"example/map.csv");
 
-	auto player = std::make_unique<Player>(map->Get_Player_Start().x, map->Get_Player_Start().y);
-	//auto block = std::make_unique<Block>(2, 1);
+	auto player = std::make_unique<Player>(map->Get_Player_Start().x, map->Get_Player_Start().y);//プレイヤー生成
+	Array<Block> blocks;//ブロック（配列）生成
+	for (int i = 0; i < map->Get_Block_Start().size(); ++i) {
+		//emplace_backで空の配列に要素を増やし、その中にデータを入れる（コピーは省いて）
+		blocks.emplace_back(map->Get_Block_Start()[i].x, map->Get_Block_Start()[i].y);//ブロックのスタート位置を代入
+	}
 
 	// 背景の色を設定する | Set the background color
 	Scene::SetBackground(ColorF{ 0.6, 0.8, 0.7 });
@@ -19,6 +23,9 @@ void Main()
 	{
 		map->DrawMap();
 		player->Draw();
+		for (int i = 0; i < map->Get_Block_Start().size(); ++i) {
+			blocks[i].Draw();
+		}
 
 		player->Move();
 		

@@ -1,16 +1,20 @@
 ﻿#include "Object.h"
 #include "Map.h"
 
-Object::Object(int x, int y) : x(x), y(y),
-	rect{ x * Map::Get_MAP_CHIP_SIZE(), y * Map::Get_MAP_CHIP_SIZE(), Map::Get_MAP_CHIP_SIZE() } {
+Object::Object(int x, int y) : currentPosition{x, y},
+	rect{ currentPosition.x * Map::Get_MAP_CHIP_SIZE(),
+	currentPosition.y * Map::Get_MAP_CHIP_SIZE(),
+	Map::Get_MAP_CHIP_SIZE() } {
 }
 
 void Object::Draw() {
-	texture.draw(x * Map::Get_MAP_CHIP_SIZE(), y * Map::Get_MAP_CHIP_SIZE());
+	texture.draw(currentPosition.x * Map::Get_MAP_CHIP_SIZE(),
+				 currentPosition.y * Map::Get_MAP_CHIP_SIZE());
 }
 
 void Object::CheckMove(int dir) {
-	current_X = x; current_Y = y;
+	
+	
 
 }
 
@@ -31,8 +35,3 @@ void Object::Next_Position(Direction_Type dir) {
 		break;
 	}
 }
-
-int Object::GetX() { return x; }
-int Object::GetY() { return y; }
-void Object::SetX(int set_x) { this->x = set_x; }
-void Object::SetY(int set_y) { this->y = set_y; }
