@@ -17,7 +17,7 @@ public:
 	void SetX(int set_x);
 	void SetY(int set_y);
 protected:
-	int nx, ny; //移動先の座標
+	Point nextPosition; //移動先の座標
 	Point currentPosition; //現在の座標
 	Rect rect;
 	Texture texture;//画像
