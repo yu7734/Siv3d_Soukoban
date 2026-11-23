@@ -7,7 +7,7 @@
 void Main()
 {
 	auto map = std::make_unique<Map>();//インスタンスを安全に生成
-	map->LoadCSV(U"example/map.csv");
+	Grid<int32> csvPath = map->LoadCSV(U"example/map.csv");
 
 	auto player = std::make_unique<Player>(map->Get_Player_Start().x, map->Get_Player_Start().y);//プレイヤー生成
 	Array<Block> blocks;//ブロック（配列）生成
@@ -28,6 +28,7 @@ void Main()
 		}
 
 		player->Move();
+		player->NextPosition(csvPath);
 		
 	}
 }

@@ -11,7 +11,7 @@ Map::Map() : m_MapChip_Images
 }
 
 //CSVファイルからint32の２次元配列を読み込む
-void Map::LoadCSV(FilePathView path) {
+Grid<int32> Map::LoadCSV(FilePathView path) {
 	CSV csv{ path }; //CSVファイル読み込み
 
 	//読み込み失敗したら
@@ -39,6 +39,7 @@ void Map::LoadCSV(FilePathView path) {
 			}
 		}
 	}
+	return m_map_Layer;
 }
 
 //マップ描画

@@ -10,7 +10,7 @@ public:
 
 	static int Get_MAP_CHIP_SIZE();
 
-	void LoadCSV(FilePathView path);
+	Grid<int32> LoadCSV(FilePathView path);
 
 	Point Get_Player_Start();
 	Array<Point> Get_Block_Start();
