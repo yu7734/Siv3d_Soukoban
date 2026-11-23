@@ -7,8 +7,6 @@ public:
 
 	void Move() override;
 
-	void NextPosition(Grid<int32> csv);
-
 private:
 	
 };

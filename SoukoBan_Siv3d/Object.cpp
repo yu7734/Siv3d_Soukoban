@@ -13,12 +13,16 @@ void Object::Draw() {
 				 currentPosition.y * Map::Get_MAP_CHIP_SIZE());
 }
 
-void Object::CheckMove(int dir) {
-	
-	
+void Object::NextPosition(Grid<int32> csv) {
+	//移動先が壁の場合
+	if (csv[nextPosition] == 1) {
+		//nextPositionを現在の座標にする
+		nextPosition = currentPosition;
+	}
 
-}
-
-void Object::Next_Position(Direction_Type dir) {
-	
+	//移動が発生する場合
+	if (currentPosition != nextPosition) {
+		//歩行の進歩を戻す
+		currentPosition = nextPosition;
+	}
 }

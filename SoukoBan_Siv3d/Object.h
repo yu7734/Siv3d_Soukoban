@@ -9,7 +9,7 @@ public:
 
 	virtual void Move() = 0;
 	void CheckMove(int dir);
-	void Next_Position(Direction_Type dir);
+	void NextPosition(Grid<int32> csv);
 	void Draw(); //描画
 
 	Point GetCurrentPosition();//座標変数のゲッター
