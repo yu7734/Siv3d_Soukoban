@@ -1,6 +1,6 @@
 ﻿#pragma once
 # include <Siv3D.hpp>
-# include <vector>
+
 class Map {
 public:
 	Map();

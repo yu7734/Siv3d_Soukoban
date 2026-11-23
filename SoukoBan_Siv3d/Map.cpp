@@ -29,11 +29,13 @@ Grid<int32> Map::LoadCSV(FilePathView path) {
 		for (int x = 0; x < xCount; ++x) {
 			m_map_Layer[y][x] = csv.get<int32>(y, x);//指定した行・列の読み込み
 
-			if (m_map_Layer[y][x] == 3) {
+			//プレイヤーなら初期位置を保存し、床に書き換え
+			if (m_map_Layer[y][x] == 3) { 
 				m_Player_Start = { x, y };
 				m_map_Layer[y][x] = 0;
 			}
-			if (m_map_Layer[y][x] == 4) {
+			//ブロックなら初期位置を保存し、床に書き換え
+			if (m_map_Layer[y][x] == 4) { 
 				m_Block_Start << Point{ x, y };
 				m_map_Layer[y][x] = 0;
 			}

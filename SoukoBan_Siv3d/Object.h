@@ -9,13 +9,10 @@ public:
 
 	virtual void Move() = 0;
 	void CheckMove(int dir);
-	void NextPosition(Grid<int32> csv);
+	virtual void NextPosition(Grid<int32> csv);
 	void Draw(); //描画
 
 	Point GetCurrentPosition();//座標変数のゲッター
-	//座標変数のセッター
-	void SetX(int set_x);
-	void SetY(int set_y);
 protected:
 	Point nextPosition; //移動先の座標
 	Point currentPosition; //現在の座標
