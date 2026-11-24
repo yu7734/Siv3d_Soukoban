@@ -13,9 +13,14 @@ public:
 	void Draw(); //描画
 
 	Point GetCurrentPosition();//座標変数のゲッター
+	Point GetNextVector(int dir);	   //次に移動する向き
+
+	void SetCurrentPosition(Point pos);
+
 protected:
-	Point nextPosition; //移動先の座標
+	Point nextPosition;    //移動先の座標
 	Point currentPosition; //現在の座標
+	int16 direction;	   //向き
 	Rect rect;
 	Texture texture;//画像
 

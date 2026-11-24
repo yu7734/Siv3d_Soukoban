@@ -4,6 +4,8 @@
 # include "Player.h"
 # include "Block.h"
 
+
+
 void Main()
 {
 	auto map = std::make_unique<Map>();//インスタンスを安全に生成
@@ -22,14 +24,16 @@ void Main()
 	while (System::Update())
 	{
 		map->DrawMap();
+
 		player->Draw();
+		player->Move();
+		//player->NextPosition(csvPath, blocks);
+
 		for (int i = 0; i < map->Get_Block_Start().size(); ++i) {
 			blocks[i].Draw();
+			//blocks[i].BlockMove(*player);
 		}
-
-		player->Move();
-		player->NextPosition(csvPath);
-		
+		player->NextPosition(csvPath, blocks);
 	}
 }
 
