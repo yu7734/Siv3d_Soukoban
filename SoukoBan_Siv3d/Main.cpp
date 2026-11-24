@@ -4,10 +4,12 @@
 # include "Player.h"
 # include "Block.h"
 
+
+
 void Main()
 {
 	auto map = std::make_unique<Map>();//インスタンスを安全に生成
-	map->LoadCSV(U"example/map.csv");
+	Grid<int32> csvPath = map->LoadCSV(U"example/map.csv");
 
 	auto player = std::make_unique<Player>(map->Get_Player_Start().x, map->Get_Player_Start().y);//プレイヤー生成
 	Array<Block> blocks;//ブロック（配列）生成
@@ -22,13 +24,15 @@ void Main()
 	while (System::Update())
 	{
 		map->DrawMap();
+
 		player->Draw();
+		player->Move();
+		//player->NextPosition(csvPath, blocks);
+
 		for (int i = 0; i < map->Get_Block_Start().size(); ++i) {
 			blocks[i].Draw();
 		}
-
-		player->Move();
-		
+		player->NextPosition(csvPath, blocks);
 	}
 }
 

@@ -9,16 +9,18 @@ public:
 
 	virtual void Move() = 0;
 	void CheckMove(int dir);
-	void Next_Position(Direction_Type dir);
+	virtual void NextPosition(Grid<int32> csv);
 	void Draw(); //描画
 
 	Point GetCurrentPosition();//座標変数のゲッター
-	//座標変数のセッター
-	void SetX(int set_x);
-	void SetY(int set_y);
+	Point GetNextVector(int dir);	   //次に移動する向き
+
+	void SetCurrentPosition(Point pos);
+
 protected:
-	Point nextPosition; //移動先の座標
+	Point nextPosition;    //移動先の座標
 	Point currentPosition; //現在の座標
+	int16 direction;	   //向き
 	Rect rect;
 	Texture texture;//画像
 

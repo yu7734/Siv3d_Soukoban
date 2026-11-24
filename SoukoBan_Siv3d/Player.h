@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Object.h"
+#include "Block.h"
 
 class Player : public Object {
 public:
@@ -7,6 +8,7 @@ public:
 
 	void Move() override;
 
-private:
-	
+	void NextPosition(Grid<int32> csv, Array<Block>& blocks);
+
+	int16 GetDirection();
 };
