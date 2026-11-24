@@ -31,7 +31,6 @@ void Main()
 
 		for (int i = 0; i < map->Get_Block_Start().size(); ++i) {
 			blocks[i].Draw();
-			//blocks[i].BlockMove(*player);
 		}
 		player->NextPosition(csvPath, blocks);
 	}
